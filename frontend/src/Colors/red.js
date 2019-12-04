@@ -1,6 +1,6 @@
 let color = {
     navigationBar : "#bd3737",
-    navigationFonts : "white"
+    navigationFonts : "black"
 };
 
 export { color };
