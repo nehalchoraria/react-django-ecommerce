@@ -1,5 +1,5 @@
 let color = {
-    navigationBar : "white",
+    navigationBar : "grey",
     navigationFonts : "white"
 };
 

@@ -11,9 +11,9 @@ class Profile extends Component {
 
     render() {
       return <li className="nav-item">
-      <a className="nav-link border border-light rounded waves-effect">
+      <h6 className="nav-link border border-light rounded waves-effect">
         Profile 
-      </a>
+      </h6>
     </li>
     }
   }

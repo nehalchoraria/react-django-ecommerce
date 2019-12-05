@@ -3,8 +3,9 @@ import './NavigationBar.css';
 import Cart from '../Cart/Cart';
 import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
-import SettingsIcon from '@material-ui/icons/Settings';
-
+import NavigationSettings from '../NavigationSettings/NavigationSettings';
+import {connect} from 'react-redux'
+import {colorTheme} from '../commonFunc'
 
 class NavigationBar extends Component {
 
@@ -13,21 +14,17 @@ class NavigationBar extends Component {
       this.state = {
         allTabs : ['Home','About Us'],
         activeTab : this.props.currentPage,
-        color : this.props.color,
+        colorStyle : colorTheme(this.props.colorList.defaultColor),
         loggedIn : false,
       }
     }
-
-    navColor = {
-      background : this.props.color.navigationBar,
-    }  
-    
+        
     renderTabs() {
       let tabs = [] 
       this.state.allTabs.forEach( tabName => { 
         tabs.push(
-        <li key= {tabName} className={this.state.activeTab == tabName ? "nav-item active" : "nav-item" }>
-            <a style = {{ color : this.props.color.navigationFonts }} className="nav-link waves-effect" onClick = { e=> { this.setState({activeTab:tabName}) }}> {tabName}
+        <li key= {tabName} className={this.state.activeTab === tabName ? "nav-item active" : "nav-item" }>
+            <a style = {{ color : colorTheme(this.props.colorList.defaultColor).navigationFonts }} className="nav-link waves-effect" onClick = { e=> { this.setState({activeTab:tabName}) }}> {tabName}
             </a>
         </li>)
       });
@@ -35,8 +32,13 @@ class NavigationBar extends Component {
     }
 
     render() {
+
+      let navColor = {
+        background : colorTheme(this.props.colorList.defaultColor).navigationBar,
+      }  
+
       return (
-      <nav style = {this.navColor} className="navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar " >
+      <nav style = {navColor} className="navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar " >
       <div className="container">
         <a className="navbar-brand waves-effect">
           <strong className="white-text">E-Commerce</strong>
@@ -55,8 +57,8 @@ class NavigationBar extends Component {
           </ul>
           :
           <ul className="navbar-nav nav-flex-icons">
-          <Login style = {this.props.color} /> 
-          <SettingsIcon style = {{marginTop:'8px',color:this.props.color.navigationFonts}} />
+          <Login style = {this.state.colorStyle} /> 
+          <NavigationSettings style = {{marginTop:'8px',color:this.state.colorStyle.navigationFonts}} />
           </ul>
           }  
         </div>
@@ -65,4 +67,11 @@ class NavigationBar extends Component {
     }
   }
 
-  export default NavigationBar;
+  function mapStateToProps(state) {
+    return {
+      colorList : state.colorList
+    }
+  }
+
+
+  export default connect(mapStateToProps)(NavigationBar);
