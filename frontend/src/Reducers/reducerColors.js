@@ -8,7 +8,7 @@ export default function (state = {}, action) {
     return {
         colorList: ['red',
             'black',
-            'defaul'
+            'grey'
         ],
         defaultColor: defaultColor
     }

@@ -4,7 +4,7 @@ import React from 'react';
 class Modal extends React.Component {
 	constructor(props) {
 		super(props);
-
+		console.log(this.props.style)
 		this.outerStyle = {
 			position: "fixed",
 			top: 0,
@@ -18,10 +18,10 @@ class Modal extends React.Component {
 		this.style = {
 			modal: {
 				position: "relative",
-				width: 500,
-				padding: 20,
+				width: 450,
 				boxSizing: "border-box",
 				backgroundColor: "#fff",
+				padding : "20px",
 				margin: "40px auto",
 				borderRadius: 3,
 				zIndex: 2,

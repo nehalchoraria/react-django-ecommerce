@@ -1,6 +1,6 @@
 import {color as black} from "../Colors/black";
 import {color as red} from "../Colors/red";
-import {color as defaul} from "../Colors/defaul";
+import {color as grey} from "../Colors/grey";
 
 export const colorTheme = (color) => {
     if(color === 'red') 
@@ -8,5 +8,5 @@ export const colorTheme = (color) => {
     else if(color === 'black')
       return black
     else
-      return defaul
+      return grey
 }
