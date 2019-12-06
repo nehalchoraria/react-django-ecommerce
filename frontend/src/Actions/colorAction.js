@@ -1,6 +1,6 @@
 export const changeColor = (color) => {
     return {
-        type : "Color_Changed",
-        payload : color
+        type: "Color_Changed",
+        payload: color
     }
 }
