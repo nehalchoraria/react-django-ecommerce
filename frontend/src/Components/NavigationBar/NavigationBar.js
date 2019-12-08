@@ -6,6 +6,7 @@ import Profile from '../Profile/Profile';
 import NavigationSettings from '../NavigationSettings/NavigationSettings';
 import {connect} from 'react-redux'
 import {colorTheme} from '../commonFunc'
+import { slide as Menu } from 'react-burger-menu'
 
 class NavigationBar extends Component {
 

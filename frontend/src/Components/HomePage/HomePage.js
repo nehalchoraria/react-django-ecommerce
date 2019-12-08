@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import './HomePage.css';
 import NavigationBar from '../NavigationBar/NavigationBar';
+import {Carosel} from '../Carosel/Carosel.js'
 
 class HomePage extends Component {
     constructor(props) {
@@ -12,7 +13,10 @@ class HomePage extends Component {
 
     render() {
       return (
-      <NavigationBar currentPage={this.state.currentPage}/>
+        <div>
+           <NavigationBar currentPage={this.state.currentPage}/>
+           <Carosel/>
+        </div>
       )}
   }
   

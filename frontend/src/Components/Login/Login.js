@@ -8,8 +8,9 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import  LoginUser from '../LoginUser/LoginUser';
+import  LoginUser from './LoginUser';
 import  RegisterUser from '../RegisterUser/RegisterUser';
+import { Button } from '@material-ui/core';
 
 const modalStyle = {
   overlay: {
@@ -17,6 +18,7 @@ const modalStyle = {
   },
   modal : {
     padding:  "40px",
+    top : '10%'
   }
 };
 
@@ -56,8 +58,7 @@ function Login(props) {
       return (
           <div>
             <li className="nav-item" onClick={handleOpen}>
-              <a className="nav-link waves-effect" style={{}}>
-                <i className="fas fa-shopping-cart"></i>
+              <a className="nav-link waves-effect">
                 <span style = {{color:colorTheme(props.colorList.defaultColor).navigationFonts}} className="clearfix d-none d-sm-inline-block"> Login </span>
               </a>
             </li>
@@ -67,6 +68,7 @@ function Login(props) {
 					closeModal={handleClose}
           style={modalStyle}
 				>
+        <Button class="close" onClick={handleClose}>&times;</Button>
         <AppBar position="static">
           <Tabs value={defaultTab} onChange={changedefaultTab} aria-label="simple tabs example" >
             <Tab label="Login" style={{width:'50%'}}/>

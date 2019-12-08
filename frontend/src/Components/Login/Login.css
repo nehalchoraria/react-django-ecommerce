@@ -165,6 +165,18 @@ z-inedx:4;}
 
 em{display:none;}
 
-/* .MuiPaper-root {
-	background-color: transparent;
-} */
+.close {
+	position: absolute;
+	top: 0;
+	right : 0;
+	margin : 10px 15px 0 0;
+
+}
+
+.loginIcon {
+    font-size: 2.5rem;
+}
+
+.marginAuto {
+    margin: auto;
+}

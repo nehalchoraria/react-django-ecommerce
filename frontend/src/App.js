@@ -7,6 +7,11 @@ import HomePage from './Components/HomePage/HomePage';
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import allReducers from '../src/Reducers/index'
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
+// import $ from 'jquery';
+// import Popper from 'popper.js';
 
 const store = createStore(allReducers);
 
