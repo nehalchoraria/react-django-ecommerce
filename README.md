@@ -21,7 +21,8 @@ This is a long term on going project which will contains lot of features which I
 18. DevOps management
 19. Follow and followee model
 
-Additional 
+# Additional
+
 20. Adding redux for data storage --> DONE
 21. Docker and openshift integration
 22. Git splitting and merging , Cherry picking commits
