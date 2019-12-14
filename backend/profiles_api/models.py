@@ -25,7 +25,7 @@ class UserProfileManager(BaseUserManager):
         return user
 
 
-class UserProfiles(AbstractBaseUser,PermissionsMixin):
+class UserProfile(AbstractBaseUser,PermissionsMixin):
     '''Database modal for user in system'''
     email = models.EmailField(max_length = 255, unique = True)
     name = models.CharField(max_length = 255)

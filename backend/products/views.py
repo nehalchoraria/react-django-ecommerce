@@ -3,9 +3,9 @@ from rest_framework import viewsets
 from .serializers import ProductSerializer
 from .models import Product
 
-class PersonViewSet(viewsets.ModelViewSet):
+class ProductViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that for PersonSerializer
+    API endpoint for ProductSerializer
     """
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
