@@ -5,7 +5,7 @@ import NativeSelect from "@material-ui/core/NativeSelect";
 import InputLabel from "@material-ui/core/InputLabel";
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
-import { changeColor } from '../../Actions/colorAction'
+import { changeColor } from '../../Actions/Action'
 import SkyLight from 'react-skylight';
 import { colorTheme } from '../commonFunc';
 

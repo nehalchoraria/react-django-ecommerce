@@ -16,7 +16,7 @@ class Product(models.Model):
     
     productname = models.CharField(max_length=50)
     description = models.CharField(max_length=1000,default="")
-    seller = models.ForeignKey(get_user_model(),null=True,on_delete = models.SET_NULL )
+    seller = models.ForeignKey(get_user_model(),null=True,on_delete = models.SET_NULL,default=get_user_model())
     price = models.IntegerField(validators=[MinValueValidator(1)]) 
     subcategoryname = models.ForeignKey(Category, on_delete=models.SET_NULL , null = True , related_name = 'product_subcategoryname')
     units = models.IntegerField(validators=[MinValueValidator(1)])
