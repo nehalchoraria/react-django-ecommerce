@@ -13,3 +13,11 @@ export const setDefaultPage = (pageNo,pageSize) => {
                   pageSize:pageSize}
     }
 }
+
+export const updateProductList = (products) => {
+    console.log('ProductList',products)
+    return {
+        type: "Product_List",
+        payload: products
+    }
+}

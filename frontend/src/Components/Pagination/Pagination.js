@@ -1,27 +1,25 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux'
 
-class Product extends Component {
+class Pagination extends Component {
 
     constructor(props) {
       super(props)
       this.state = {
-        pageSize : this.props.data.pageSize,
-        pageNo : this.props.data.pageNo
+        pageNo : 0
       }
     }
     
     render() {
       let me = this;
       const pages = []
-      for(let i=0 ; i < me.state.pageSize ; i++) {
+      for(let i=0 ; i < me.props.totalPages ; i++) {
         pages.push ( 
         <li key={i} class = {i == me.state.pageNo ? "page-item active" : "page-item" }>
         <a class="page-link" onClick = { e => this.setState({pageNo:i})}>{i+1}</a>
         </li>
         )
       }
-
       return (      
           <nav class="d-flex justify-content-center wow fadeIn">
             <ul class="pagination pg-blue">
@@ -47,11 +45,5 @@ class Product extends Component {
     }
   }
 
-  function mapStateToProps(state) {
-    return {
-      pagination : state.pagination
-    }
-  }
-
-
-  export default connect(mapStateToProps)(Product);
+  
+  export default Pagination;

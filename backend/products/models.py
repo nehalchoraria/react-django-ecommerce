@@ -13,9 +13,9 @@ class Category(models.Model):
 
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
-    
     productname = models.CharField(max_length=50)
     description = models.CharField(max_length=1000,default="")
+    fulldescription = models.CharField(max_length=1000,default="")
     seller = models.ForeignKey(get_user_model(),null=True,on_delete = models.SET_NULL,default=get_user_model())
     price = models.IntegerField(validators=[MinValueValidator(1)]) 
     subcategoryname = models.ForeignKey(Category, on_delete=models.SET_NULL , null = True , related_name = 'product_subcategoryname')
@@ -24,3 +24,11 @@ class Product(models.Model):
 
     def __str__(self):
         return self.productname
+
+class Ratings(models.Model):
+    id = models.AutoField(primary_key=True)
+    userId = models.ForeignKey(get_user_model(),null=True,on_delete = models.SET_NULL,default=get_user_model())
+    productId = models.ForeignKey(Product,null=True,on_delete = models.SET_NULL)
+    comments = models.CharField(max_length=1000,default="")
+    rating = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)])
+    images = models.FileField('Document', upload_to='mydocs/')

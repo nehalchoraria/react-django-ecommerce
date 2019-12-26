@@ -10,6 +10,9 @@ const useStyles = {
     card: {
       boxShadow : "5px 5px 5px 5px rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12)"
     },
+    product : {
+      textDecoration : 'none'
+    }
 }
 
 class ProductItem extends Component {
@@ -26,7 +29,7 @@ class ProductItem extends Component {
       const productURL = "/product/" + this.props.data.id
       return (
         <div class="col-lg-3 col-md-6 mb-4">
-            <a href = {productURL} >
+            <a href = {productURL} style={classes.product} >
             <Card style={classes.card}>
                 <CardMedia
                     component="img"

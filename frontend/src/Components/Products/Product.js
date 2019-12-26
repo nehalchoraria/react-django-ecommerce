@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import ProductItem from '../ProductItem/ProductItem'
 import Pagination from '../Pagination/Pagination'
 import {productPerPage} from '../commonFunc'
-import {setDefaultPage} from "../../Actions/Action"
+import {updateProductList} from "../../Actions/Action"
 import {bindActionCreators} from 'redux'
 
 class Product extends Component {
@@ -11,22 +11,28 @@ class Product extends Component {
     constructor(props) {
       super(props)
       this.state = {
-          productList : []
+        totalPages : 0,
+        startPosition : 0
       }
     }
 
     componentDidMount() {
         let me = this;
-        fetch('/products')
+        fetch('products/product/')
         .then((resp) => resp.json()) 
         .then(function(data) {
-            let totalPages = data.count / productPerPage
-            me.setState({productList:data.results})
-            me.props.setDefaultPage(0,totalPages)
+            me.props.updateProductList(data.results)
+            let count = data.count / productPerPage
+            console.log(count)
+            me.setState({ 
+               totalPages:count,
+              })
           })
     }
     
     render() {
+
+      console.log('totalPages',this.state.totalPages)
       return (
         <main>
         <div style = {{padding:"0 15px 0 15px"}}>
@@ -69,15 +75,13 @@ class Product extends Component {
      
           <section class="text-center mb-4">
             <div class="row wow fadeIn">
-                {this.state.productList.map( (product) => {
-                   return <ProductItem data = {product} />
-                 })}    
+              {this.props.mainData.products.map( (product) => {
+                console.log(product)
+                  return <ProductItem data = {product} />
+                })}    
             </div>
           </section>
-          {this.props.pagination.pageSize >= 1 ?
-          <Pagination data={{
-            pageNo:this.props.pagination.currentPage,
-            pageSize:this.props.pagination.pageSize}}/> : "" }
+          <Pagination totalPages={this.state.totalPages} />
         </div>
       </main>
       )
@@ -87,13 +91,14 @@ class Product extends Component {
   function mapStateToProps(state) {
     return {
       colorList : state.colorList,
-      pagination : state.pagination
+      pagination : state.pagination,
+      mainData : state.mainData
     }
   }
 
   function mapDispatchToProps(dispatch) {
     return bindActionCreators({ 
-      setDefaultPage : setDefaultPage 
+      updateProductList : updateProductList
     }, dispatch)
   }
 

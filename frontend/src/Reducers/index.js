@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux'
 import reducerColors from './reducerColors'
-import pagination from './pagination'
+import products from './data'
 
 const allReducers = combineReducers({
     colorList : reducerColors,
-    pagination : pagination
+    mainData : products
 })
 
 export default allReducers
