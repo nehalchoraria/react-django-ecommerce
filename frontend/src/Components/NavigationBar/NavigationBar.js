@@ -7,14 +7,15 @@ import NavigationSettings from '../NavigationSettings/NavigationSettings';
 import {connect} from 'react-redux'
 import {colorTheme} from '../commonFunc'
 import { slide as Menu } from 'react-burger-menu'
+import { bindActionCreators } from 'redux';
+import {updateTab} from "../../Actions/Action"
 
 class NavigationBar extends Component {
 
     constructor(props) {
       super(props)
       this.state = {
-        allTabs : ['Home','About Us'],
-        activeTab : this.props.currentPage,
+        allTabs : ['Home','Products','AboutUs'],
         colorStyle : colorTheme(this.props.colorList.defaultColor),
         loggedIn : false,
       }
@@ -24,8 +25,8 @@ class NavigationBar extends Component {
       let tabs = [] 
       this.state.allTabs.forEach( tabName => { 
         tabs.push(
-        <li key= {tabName} className={this.state.activeTab === tabName ? "nav-item active" : "nav-item" }>
-            <a style = {{ color : colorTheme(this.props.colorList.defaultColor).navigationFonts }} className="nav-link waves-effect" onClick = { e=> { this.setState({activeTab:tabName}) }}> {tabName}
+        <li key= {tabName} className={this.props.tab === tabName ? "nav-item active" : "nav-item" }>
+            <a style = {{ color : colorTheme(this.props.colorList.defaultColor).navigationFonts }} className="nav-link waves-effect" onClick = { e=> { console.log(tabName);this.props.updateTab(tabName) }}> {tabName}
             </a>
         </li>)
       });
@@ -33,7 +34,7 @@ class NavigationBar extends Component {
     }
 
     render() {
-
+      console.log(this.props)
       let navColor = {
         background : colorTheme(this.props.colorList.defaultColor).navigationBar,
       }  
@@ -70,9 +71,16 @@ class NavigationBar extends Component {
 
   function mapStateToProps(state) {
     return {
-      colorList : state.colorList
+      colorList : state.colorList,
+      tab : state.mainData.activeTab
     }
   }
 
+  function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ 
+      updateTab : updateTab
+    }, dispatch)
+  }
 
-  export default connect(mapStateToProps)(NavigationBar);
+
+  export default connect(mapStateToProps,mapDispatchToProps)(NavigationBar);

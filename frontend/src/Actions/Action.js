@@ -21,3 +21,11 @@ export const updateProductList = (products) => {
         payload: products
     }
 }
+
+export const updateTab = (tab) => {
+    console.log('Tab_Change',tab)
+    return {
+        type: "Tab_Change",
+        payload: tab
+    }
+}

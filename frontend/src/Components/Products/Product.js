@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import ProductItem from '../ProductItem/ProductItem'
 import Pagination from '../Pagination/Pagination'
 import {productPerPage} from '../commonFunc'
-import {updateProductList} from "../../Actions/Action"
+import {updateProductList,updateTab} from "../../Actions/Action"
 import {bindActionCreators} from 'redux'
 
 class Product extends Component {
@@ -14,6 +14,7 @@ class Product extends Component {
         totalPages : 0,
         startPosition : 0
       }
+      console.log('ppp',props)
     }
 
     componentDidMount() {
@@ -32,11 +33,11 @@ class Product extends Component {
     
     render() {
 
-      console.log('totalPages',this.state.totalPages)
+      console.log('totalPages',this.props.style)
       return (
-        <main>
+        <main style={this.props.style}>
         <div style = {{padding:"0 15px 0 15px"}}>
-          <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
+          <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5" style = {{marginTop:'5rem!important'}}>
     
             <span class="navbar-brand">Categories:</span>
     
@@ -81,7 +82,9 @@ class Product extends Component {
                 })}    
             </div>
           </section>
-          <Pagination totalPages={this.state.totalPages} />
+          {this.props.mainData.activeTab === 'Products' ? 
+            <Pagination totalPages={this.state.totalPages}/> :
+            <a style = {{textDecoration:'none',paddingBottom:'50px'}} onClick = { e=> { this.props.updateTab('Products') }}>See More....</a> }
         </div>
       </main>
       )
@@ -98,7 +101,8 @@ class Product extends Component {
 
   function mapDispatchToProps(dispatch) {
     return bindActionCreators({ 
-      updateProductList : updateProductList
+      updateProductList : updateProductList,
+      updateTab : updateTab
     }, dispatch)
   }
 

@@ -1,16 +1,18 @@
-export default function (state = {}, action) {
-
-    let defaultColor = 'red'
-    if (action.type === 'Color_Changed')
-        defaultColor = action.payload
-    console.log(defaultColor)
-
-    return {
-        colorList: ['red',
+const intialstate = {
+    defaultColor : 'red',
+    colorList: ['red',
             'black',
             'grey'
-        ],
-        defaultColor: defaultColor
-    }
+        ]
+}
+
+export default function (state = intialstate , action) {
+
+    if (action.type === 'Color_Changed')
+        return Object.assign({}, state, {
+            defaultColor: action.payload,
+        })
+    
+    return state;
 
 }
