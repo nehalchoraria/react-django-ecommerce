@@ -1,6 +1,6 @@
 attrs==19.3.0
 distro-info===0.18ubuntu0.18.04.1
-Django==2.2.8
+Django==2.2.10
 django-allauth==0.37.1
 django-cors-headers==2.4.0
 django-rest-auth==0.9.3
